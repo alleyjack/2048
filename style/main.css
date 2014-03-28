@@ -149,7 +149,7 @@ hr {
   -ms-user-select: none;
   -ms-touch-action: none;
   touch-action: none;
-  background: #bbada0;
+  background: #D4EFAF;
   border-radius: 6px;
   width: 500px;
   height: 500px;
@@ -334,7 +334,7 @@ hr {
     background: #f65e3b url("http://imgur.com/P1aHTZa.png") no-repeat; }
   .tile.tile-128 .tile-inner {
     color: transparent;
-    background: #D7E3F4 url("http://imgur.com/YJI8DHb.png") no-repeat;
+    background: #BBD9F9 url("http://imgur.com/YJI8DHb.png") no-repeat;
     box-shadow: 0 0 30px 10px rgba(215, 227, 224, 0.2381), inset 0 0 0 1px rgba(255, 255, 255, 0.14286);
     font-size: 45px; }
     @media screen and (max-width: 520px) {
@@ -342,7 +342,7 @@ hr {
         font-size: 25px; } }
   .tile.tile-256 .tile-inner {
     color: transparent;
-    background: #C3DFF7 url("http://imgur.com/Q9eVEAT.png") no-repeat;
+    background: #A0CCFF url("http://imgur.com/Q9eVEAT.png") no-repeat;
     box-shadow: 0 0 30px 10px rgba(195, 223, 247, 0.31746), inset 0 0 0 1px rgba(255, 255, 255, 0.19048);
     font-size: 45px; }
     @media screen and (max-width: 520px) {
@@ -350,7 +350,7 @@ hr {
         font-size: 25px; } }
   .tile.tile-512 .tile-inner {
     color: transparent;
-    background: #9FC6EA url("http://imgur.com/pzy7Y0O.png") no-repeat;
+    background: #7AAFFF url("http://imgur.com/pzy7Y0O.png") no-repeat;
     box-shadow: 0 0 30px 10px rgba(159, 198, 234, 0.39683), inset 0 0 0 1px rgba(255, 255, 255, 0.2381);
     font-size: 45px; }
     @media screen and (max-width: 520px) {
