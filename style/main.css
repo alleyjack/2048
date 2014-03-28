@@ -3,7 +3,7 @@ html, body {
   margin: 0;
   padding: 0;
   background: #EEFFEE;
-  color: #74A05E;
+  color: #3E7614;
   font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
   font-size: 18px; }
 
@@ -72,7 +72,7 @@ h1.title {
     font-size: 13px;
     line-height: 13px;
     text-align: center;
-    color: #eee4da; }
+    color: white; }
   .score-container .score-addition, .best-container .score-addition {
     position: absolute;
     right: 30px;
@@ -358,7 +358,7 @@ hr {
       .tile.tile-512 .tile-inner {
         font-size: 25px; } }
   .tile.tile-1024 .tile-inner {
-    color: #f9f6f2;
+    color: transparent;
     background: #edc53f url("http://imgur.com/wYLr1b3.png") no-repeat;
     box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.47619), inset 0 0 0 1px rgba(255, 255, 255, 0.28571);
     font-size: 35px; }
@@ -366,7 +366,7 @@ hr {
       .tile.tile-1024 .tile-inner {
         font-size: 15px; } }
   .tile.tile-2048 .tile-inner {
-    color: #f9f6f2;
+    color: transparent;
     background: #edc22e url("http://imgur.com/O6ZemW8.png") no-repeat;
     box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.55556), inset 0 0 0 1px rgba(255, 255, 255, 0.33333);
     font-size: 35px; }
@@ -374,7 +374,7 @@ hr {
       .tile.tile-2048 .tile-inner {
         font-size: 15px; } }
   .tile.tile-super .tile-inner {
-    color: #f9f6f2;
+    color: transparent;
     background: #3c3a32 url("http://imgur.com/gQWk1jI.png") no-repeat;
     font-size: 30px; }
     @media screen and (max-width: 520px) {
