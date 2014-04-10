@@ -7,8 +7,7 @@ html, body {
   font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
   font-size: 18px; }
 
-body {
-  margin: 80px 0; }
+body { margin: 2em 0; }
 
 .heading:after {
   content: "";
@@ -16,11 +15,13 @@ body {
   clear: both; }
 
 h1.title {
-  font-size: 80px;
+  font-size: 4em;
   font-weight: bold;
   margin: 0;
   display: block;
   float: left; }
+
+h2 { margin-top:0; }
 
 @-webkit-keyframes move-up {
   0% {
@@ -96,8 +97,7 @@ h1.title {
   content: "Best"; }
 
 p {
-  margin-top: 0;
-  margin-bottom: 10px;
+  margin: 1em 0;
   line-height: 1.65; }
 
 a {
@@ -186,12 +186,10 @@ hr {
       display: inline-block;
       background: #3E7614;
       border-radius: 3px;
-      padding: 0 20px;
+      padding: 10px 20px;
       text-decoration: none;
       color: #f9f6f2;
-      height: 40px;
-      line-height: 42px;
-      margin-left: 9px; }
+      margin: 9px; }
       .game-container .game-message a.keep-playing-button {
         display: none; }
     .game-container .game-message.game-won {
@@ -316,58 +314,49 @@ hr {
     font-size: 55px;
     color:transparent; }
   .tile.tile-2 .tile-inner {
-    background: #D4EDC7 url("http://imgur.com/T5GbXRl.png") no-repeat;
+    background: #D4EDC7;
     box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0), inset 0 0 0 1px rgba(255, 255, 255, 0); }
   .tile.tile-4 .tile-inner {
-    background: #A9D891 url("http://imgur.com/DiSeh37.png") no-repeat;
+    background: #A9D891;
     box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0), inset 0 0 0 1px rgba(255, 255, 255, 0); }
   .tile.tile-8 .tile-inner {
-    color: transparent;
-    background: #78C850 url("http://imgur.com/q1xHbpE.png") no-repeat; }
+    background: #78C850; }
   .tile.tile-16 .tile-inner {
-    color: transparent;
-    background: #f59563 url("http://imgur.com/mM5VptK.png") no-repeat; }
+    background: #f59563; }
   .tile.tile-32 .tile-inner {
-    color: transparent;
-    background: #f67c5f url("http://imgur.com/UCycvpF.png") no-repeat; }
+    background: #f67c5f; }
   .tile.tile-64 .tile-inner {
-    color: transparent;
-    background: #f65e3b url("http://imgur.com/P1aHTZa.png") no-repeat; }
+    background: #f65e3b; }
   .tile.tile-128 .tile-inner {
-    color: transparent;
-    background: #BBD9F9 url("http://imgur.com/YJI8DHb.png") no-repeat;
+    background: #BBD9F9;
     box-shadow: 0 0 30px 10px rgba(215, 227, 224, 0.2381), inset 0 0 0 1px rgba(255, 255, 255, 0.14286);
     font-size: 45px; }
     @media screen and (max-width: 520px) {
       .tile.tile-128 .tile-inner {
         font-size: 25px; } }
   .tile.tile-256 .tile-inner {
-    color: transparent;
-    background: #A0CCFF url("http://imgur.com/Q9eVEAT.png") no-repeat;
+    background: #A0CCFF;
     box-shadow: 0 0 30px 10px rgba(195, 223, 247, 0.31746), inset 0 0 0 1px rgba(255, 255, 255, 0.19048);
     font-size: 45px; }
     @media screen and (max-width: 520px) {
       .tile.tile-256 .tile-inner {
         font-size: 25px; } }
   .tile.tile-512 .tile-inner {
-    color: transparent;
-    background: #7AAFFF url("http://imgur.com/pzy7Y0O.png") no-repeat;
+    background: #7AAFFF;
     box-shadow: 0 0 30px 10px rgba(159, 198, 234, 0.39683), inset 0 0 0 1px rgba(255, 255, 255, 0.2381);
     font-size: 45px; }
     @media screen and (max-width: 520px) {
       .tile.tile-512 .tile-inner {
         font-size: 25px; } }
   .tile.tile-1024 .tile-inner {
-    color: transparent;
-    background: #edc53f url("http://imgur.com/wYLr1b3.png") no-repeat;
+    background: #edc53f;
     box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.47619), inset 0 0 0 1px rgba(255, 255, 255, 0.28571);
     font-size: 35px; }
     @media screen and (max-width: 520px) {
       .tile.tile-1024 .tile-inner {
         font-size: 15px; } }
   .tile.tile-2048 .tile-inner {
-    color: transparent;
-    background: #edc22e url("http://imgur.com/O6ZemW8.png") no-repeat;
+    background: #edc22e;
     box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.55556), inset 0 0 0 1px rgba(255, 255, 255, 0.33333);
     font-size: 35px; }
     @media screen and (max-width: 520px) {
@@ -375,11 +364,48 @@ hr {
         font-size: 15px; } }
   .tile.tile-super .tile-inner {
     color: transparent;
-    background: #3c3a32 url("http://imgur.com/gQWk1jI.png") no-repeat;
+    background: #3c3a32;
     font-size: 30px; }
     @media screen and (max-width: 520px) {
       .tile.tile-super .tile-inner {
         font-size: 10px; } }
+
+    /* Icon set by level */
+    .tile.tile-2.level-1 .tile-inner { background-image:url("http://imgur.com/T5GbXRl.png"); }
+    .tile.tile-4.level-1 .tile-inner { background-image:url("http://imgur.com/DiSeh37.png"); }
+    .tile.tile-8.level-1 .tile-inner { background-image:url("http://imgur.com/q1xHbpE.png"); }
+    .tile.tile-16.level-1 .tile-inner { background-image:url("http://imgur.com/mM5VptK.png"); }
+    .tile.tile-32.level-1 .tile-inner { background-image:url("http://imgur.com/UCycvpF.png"); }
+    .tile.tile-64.level-1 .tile-inner { background-image:url("http://imgur.com/P1aHTZa.png"); }
+    .tile.tile-128.level-1 .tile-inner { background-image:url("http://imgur.com/YJI8DHb.png"); }
+    .tile.tile-256.level-1 .tile-inner { background-image:url("http://imgur.com/Q9eVEAT.png"); }
+    .tile.tile-512.level-1 .tile-inner { background-image:url("http://imgur.com/pzy7Y0O.png"); }
+    .tile.tile-1024.level-1 .tile-inner { background-image:url("http://imgur.com/wYLr1b3.png"); }
+    .tile.tile-2048.level-1 .tile-inner { background-image:url("http://imgur.com/O6ZemW8.png"); }
+    
+    .tile.tile-2.level-2 .tile-inner { background-image:url("http://imgur.com/eb7Ir6j.png"); }
+    .tile.tile-4.level-2 .tile-inner { background-image:url("http://imgur.com/enij7Q0.png"); }
+    .tile.tile-8.level-2 .tile-inner { background-image:url("http://imgur.com/mGEq0XA.png"); }
+    .tile.tile-16.level-2 .tile-inner { background-image:url("http://imgur.com/8jdcqiu.png"); }
+    .tile.tile-32.level-2 .tile-inner { background-image:url("http://imgur.com/qd29Ybi.png"); }
+    .tile.tile-64.level-2 .tile-inner { background-image:url("http://imgur.com/AEyLcE9.png"); }
+    .tile.tile-128.level-2 .tile-inner { background-image:url("http://imgur.com/Au2eax9.png"); }
+    .tile.tile-256.level-2 .tile-inner { background-image:url("http://imgur.com/RVN5qtT.png"); }
+    .tile.tile-512.level-2 .tile-inner { background-image:url("http://imgur.com/QWWBdja.png"); }
+    .tile.tile-1024.level-2 .tile-inner { background-image:url("http://imgur.com/yImxiDe.png"); }
+    .tile.tile-2048.level-2 .tile-inner { background-image:url("http://imgur.com/J0LmLWY.png"); }
+    
+    .tile.tile-2.level-3 .tile-inner { background-image:url("http://imgur.com/1HZQpp8.png"); }
+    .tile.tile-4.level-3 .tile-inner { background-image:url("http://imgur.com/WuTvrD7.png"); }
+    .tile.tile-8.level-3 .tile-inner { background-image:url("http://imgur.com/x39LfUS.png"); }
+    .tile.tile-16.level-3 .tile-inner { background-image:url("http://imgur.com/cUu3AeO.png"); }
+    .tile.tile-32.level-3 .tile-inner { background-image:url("http://imgur.com/d1nLkEB.png"); }
+    .tile.tile-64.level-3 .tile-inner { background-image:url("http://imgur.com/GQsGsVA.png"); }
+    .tile.tile-128.level-3 .tile-inner { background-image:url("http://imgur.com/pdiTx1W.png"); }
+    .tile.tile-256.level-3 .tile-inner { background-image:url("http://imgur.com/UQt7olv.png"); }
+    .tile.tile-512.level-3 .tile-inner { background-image:url("http://imgur.com/19cmTyC.png"); }
+    .tile.tile-1024.level-3 .tile-inner { background-image:url("http://imgur.com/9YKo71C.png"); }
+    .tile.tile-2048.level-3 .tile-inner { background-image:url("http://imgur.com/GPIuSaU.png"); }
 
 @-webkit-keyframes appear {
   0% {
@@ -502,9 +528,6 @@ hr {
   text-align: center;
   float: right; }
 
-.game-explanation {
-  margin-top: 50px; }
-
 @media screen and (max-width: 520px) {
   html, body {
     font-size: 15px; }
@@ -534,6 +557,10 @@ hr {
     display: block;
     box-sizing: border-box;
     line-height: 1.65; }
+
+	.top-pokemon {
+		display: inline;
+	}
 
   .restart-button {
     width: 42%;
