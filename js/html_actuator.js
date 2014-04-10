@@ -4,6 +4,7 @@ function HTMLActuator() {
   this.bestContainer    = document.querySelector(".best-container");
   this.messageContainer = document.querySelector(".game-message");
   this.sharingContainer = document.querySelector(".score-sharing");
+  this.topPokemon       = document.querySelector(".top-pokemon");
 
   this.score = 0;
 }
@@ -17,7 +18,7 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
     grid.cells.forEach(function (column) {
       column.forEach(function (cell) {
         if (cell) {
-          self.addTile(cell);
+          self.addTile(cell, metadata.level);
         }
       });
     });
@@ -37,11 +38,12 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
 };
 
 // Continues the game (both restart and keep playing)
-HTMLActuator.prototype.continueGame = function () {
-  if (typeof ga !== "undefined") {
+HTMLActuator.prototype.continueGame = function (level) {
+  /* if (typeof ga !== "undefined") {
     ga("send", "event", "game", "restart");
-  }
-
+  } */ //NewRemoval (unnecessary Analytics stuff)
+  
+  this.updateTopPokemon(level); //NewAddition
   this.clearMessage();
 };
 
@@ -51,7 +53,7 @@ HTMLActuator.prototype.clearContainer = function (container) {
   }
 };
 
-HTMLActuator.prototype.addTile = function (tile) {
+HTMLActuator.prototype.addTile = function (tile, level) {
   var self = this;
 
   var wrapper   = document.createElement("div");
@@ -60,19 +62,20 @@ HTMLActuator.prototype.addTile = function (tile) {
   var positionClass = this.positionClass(position);
 
   // We can't use classlist because it somehow glitches when replacing classes
-  var classes = ["tile", "tile-" + tile.value, positionClass];
+  var classes = ["tile", "tile-" + tile.value, "level-" + level, positionClass]; // NewChange
+  //var classes = ["tile", "tile-" + tile.value, positionClass];
 
-  if (tile.value > 2048) classes.push("tile-super");
+  //if (tile.value > 2048) classes.push("tile-super");  //NewRemoval
 
   this.applyClasses(wrapper, classes);
 
   inner.classList.add("tile-inner");
-  inner.textContent = tile.value;
+  //inner.textContent = tile.value; //NewRemoval
 
   if (tile.previousPosition) {
     // Make sure that the tile gets rendered in the previous position first
     window.requestAnimationFrame(function () {
-      classes[2] = self.positionClass({ x: tile.x, y: tile.y });
+      classes[3] = self.positionClass({ x: tile.x, y: tile.y }); //NewChange (from 2 to 3 to account for level class)
       self.applyClasses(wrapper, classes); // Update the position
     });
   } else if (tile.mergedFrom) {
@@ -97,6 +100,10 @@ HTMLActuator.prototype.addTile = function (tile) {
 
 HTMLActuator.prototype.applyClasses = function (element, classes) {
   element.setAttribute("class", classes.join(" "));
+};
+
+HTMLActuator.prototype.applyStyles = function (element, styles) { // NewAddition
+  element.setAttribute("style", styles.join(" "));
 };
 
 HTMLActuator.prototype.normalizePosition = function (position) {
@@ -129,19 +136,29 @@ HTMLActuator.prototype.updateBestScore = function (bestScore) {
   this.bestContainer.textContent = bestScore;
 };
 
+HTMLActuator.prototype.updateTopPokemon = function (level) {	//NewAddition
+  var topPokemon = "Raichu";
+  if (level==2) { topPokemon = "Ho-Oh"; }
+  else if (level == 3) { topPokemon = "Groudon"; }
+  else if (level == 4) { topPokemon = "Dialga"; }
+  else if (level == 5) { topPokemon = "Zekrom"; }
+  else if (level > 5) { topPokemon = "Yveltal"; }
+    
+  this.topPokemon.textContent = topPokemon;	//NewAddition
+};
+
 HTMLActuator.prototype.message = function (won) {
   var type    = won ? "game-won" : "game-over";
   var message = won ? "You win!" : "Game over!";
 
-  if (typeof ga !== "undefined") {
+  /* if (typeof ga !== "undefined") {
     ga("send", "event", "game", "end", type, this.score);
-  }
+  } */ //NewRemoval (unnecessary Analytics stuff)
 
   this.messageContainer.classList.add(type);
   this.messageContainer.getElementsByTagName("p")[0].textContent = message;
 
   this.clearContainer(this.sharingContainer);
-  this.sharingContainer.appendChild(this.scoreTweetButton());
   twttr.widgets.load();
 };
 
@@ -149,20 +166,4 @@ HTMLActuator.prototype.clearMessage = function () {
   // IE only takes one value to remove at a time.
   this.messageContainer.classList.remove("game-won");
   this.messageContainer.classList.remove("game-over");
-};
-
-HTMLActuator.prototype.scoreTweetButton = function () {
-  var tweet = document.createElement("a");
-  tweet.classList.add("twitter-share-button");
-  tweet.setAttribute("href", "https://twitter.com/share");
-  tweet.setAttribute("data-via", "gabrielecirulli");
-  tweet.setAttribute("data-url", "http://git.io/2048");
-  tweet.setAttribute("data-counturl", "http://gabrielecirulli.github.io/2048/");
-  tweet.textContent = "Tweet";
-
-  var text = "I scored " + this.score + " points at 2048, a game where you " +
-             "join numbers to score high! #2048game";
-  tweet.setAttribute("data-text", text);
-
-  return tweet;
 };
