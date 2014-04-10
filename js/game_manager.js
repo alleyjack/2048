@@ -16,14 +16,19 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
 // Restart the game
 GameManager.prototype.restart = function () {
   this.storageManager.clearGameState();
-  this.actuator.continueGame(); // Clear the game won/lost message
+  this.actuator.continueGame(1); // Clear the game won/lost message // NewChange
   this.setup();
 };
 
 // Keep playing after winning (allows going over 2048)
 GameManager.prototype.keepPlaying = function () {
   this.keepPlaying = true;
-  this.actuator.continueGame(); // Clear the game won/lost message
+  this.level = this.level + 1; //NewAddition, progress to the new level
+  this.storageManager.setLevel(this.level); //NewAddition, pass the new level to the storage manager so it isn't lost with the state
+  this.storageManager.clearGameState(); //NewAddition, clear the state to reset the tiles (loses the local level)
+  this.level = this.storageManager.getLevel(); //NewAddition, get the level back in here and reassigned locally
+  this.actuator.continueGame(this.level); // Clear the game won/lost message // NewChange, keep playing with the new level
+  this.setup(); //NewAddition
 };
 
 // Return true if the game is lost, or has won and the user hasn't kept playing
@@ -47,12 +52,14 @@ GameManager.prototype.setup = function () {
     this.over        = previousState.over;
     this.won         = previousState.won;
     this.keepPlaying = previousState.keepPlaying;
+    this.level       = previousState.level; //NewAddition
   } else {
     this.grid        = new Grid(this.size);
     this.score       = 0;
     this.over        = false;
     this.won         = false;
     this.keepPlaying = false;
+    this.level       = 1; //NewAddition
 
     // Add the initial tiles
     this.addStartTiles();
@@ -89,6 +96,7 @@ GameManager.prototype.actuate = function () {
   if (this.over) {
     this.storageManager.clearGameState();
   } else {
+    this.storageManager.setLevel(this.level); // NewAddition
     this.storageManager.setGameState(this.serialize());
   }
 
@@ -97,6 +105,7 @@ GameManager.prototype.actuate = function () {
     over:       this.over,
     won:        this.won,
     bestScore:  this.storageManager.getBestScore(),
+    level:      this.storageManager.getLevel(), //NewAddition
     terminated: this.isGameTerminated()
   });
 
@@ -109,6 +118,7 @@ GameManager.prototype.serialize = function () {
     score:       this.score,
     over:        this.over,
     won:         this.won,
+    level:       this.level, //NewAddition
     keepPlaying: this.keepPlaying
   };
 };
