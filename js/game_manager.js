@@ -28,7 +28,7 @@ GameManager.prototype.keepPlaying = function () {
   // this.storageManager.clearGameState(); //NewAddition, clear the state to reset the tiles (loses the local level)
   // this.level = this.storageManager.getLevel(); //NewAddition, get the level back in here and reassigned locally
   this.actuator.continueGame(this.level); // Clear the game won/lost message // NewChange, keep playing with the new level
-  this.setup(); //NewAddition
+  //this.setup(); //NewAddition
 };
 
 // Return true if the game is lost, or has won and the user hasn't kept playing
